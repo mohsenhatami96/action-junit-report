@@ -301,26 +301,31 @@ async function parseSuite(
       )
         .toString()
         .trim()
-      
+
       const systemOut: string = (
-        (suite.system-out && suite.system-out._cdata) ||
-        (suite.system-out && suite.system-out._text) ||
+        (suite.system_out && suite.system_out._cdata) ||
+        (suite.system_out && suite.system_out._text) ||
         ''
       )
         .toString()
         .trim()
 
       const systemErr: string = (
-        (suite.system-err && suite.system-err._cdata) ||
-        (suite.system-err && suite.system-err._text) ||
+        (suite.system_err && suite.system_err._cdata) ||
+        (suite.system_err && suite.system_err._text) ||
         ''
       )
         .toString()
         .trim()
 
-      const errorOutput: string = "Stack Trace:\n".concat(stackTrace, "\n\n\n",
-        "System Output:\n", systemOut, "\n\n\n",
-        "System Error:\n", systemErr
+      const errorOutput: string = 'Stack Trace:\n'.concat(
+        stackTrace,
+        '\n\n\n',
+        'System Output:\n',
+        systemOut,
+        '\n\n\n',
+        'System Error:\n',
+        systemErr
       )
 
       const message: string = (
@@ -338,7 +343,7 @@ async function parseSuite(
           failure?._attributes?.line ||
           (testsuite._attributes !== undefined ? testsuite._attributes.line : null),
         testcase._attributes.classname ? testcase._attributes.classname : testcase._attributes.name,
-        errorOutput,
+        errorOutput
       )
 
       let transformedFileName = pos.fileName
