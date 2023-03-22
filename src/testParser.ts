@@ -318,10 +318,9 @@ async function parseSuite(
         .toString()
         .trim()
 
-      const errorOutput: string = (
-        "Stack Trace:\n" + stackTrace + "\n\n\n" +
-        "System Output:\n" + systemOut + "\n\n\n" +
-        "System Error:\n" + systemErr
+      const errorOutput: string = "Stack Trace:\n".concat(stackTrace, "\n\n\n",
+        "System Output:\n", systemOut, "\n\n\n",
+        "System Error:\n", systemErr
       )
 
       const message: string = (
