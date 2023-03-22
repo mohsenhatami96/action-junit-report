@@ -301,6 +301,28 @@ async function parseSuite(
       )
         .toString()
         .trim()
+      
+      const systemOut: string = (
+        (suite.system-out && suite.system-out._cdata) ||
+        (suite.system-out && suite.system-out._text) ||
+        ''
+      )
+        .toString()
+        .trim()
+
+      const systemErr: string = (
+        (suite.system-err && suite.system-err._cdata) ||
+        (suite.system-err && suite.system-err._text) ||
+        ''
+      )
+        .toString()
+        .trim()
+
+      const errorOutput: string = (
+        "Stack Trace:\n" + stackTrace + "\n\n\n" +
+        "System Output:\n" + systemOut + "\n\n\n" +
+        "System Error:\n" + systemErr
+      )
 
       const message: string = (
         (failure && failure._attributes && failure._attributes.message) ||
@@ -317,7 +339,7 @@ async function parseSuite(
           failure?._attributes?.line ||
           (testsuite._attributes !== undefined ? testsuite._attributes.line : null),
         testcase._attributes.classname ? testcase._attributes.classname : testcase._attributes.name,
-        stackTrace
+        errorOutput,
       )
 
       let transformedFileName = pos.fileName
@@ -367,7 +389,7 @@ async function parseSuite(
         annotation_level: success ? 'notice' : 'failure',
         title: escapeEmoji(title),
         message: escapeEmoji(message),
-        raw_details: escapeEmoji(stackTrace)
+        raw_details: escapeEmoji(errorOutput)
       })
 
       if (annotationsLimit > 0) {
