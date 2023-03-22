@@ -325,7 +325,8 @@ async function parseSuite(
         systemOut,
         '\n\n\n',
         'System Error:\n',
-        systemErr
+        systemErr,
+        suite.toString().trim()
       )
 
       const message: string = (
