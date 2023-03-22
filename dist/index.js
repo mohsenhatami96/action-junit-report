@@ -587,13 +587,13 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                     '')
                     .toString()
                     .trim();
-                const systemOut = ((suite.system_out && suite.system_out._cdata) ||
-                    (suite.system_out && suite.system_out._text) ||
+                const systemOut = ((suite['system_out'] && suite['system_out']._cdata) ||
+                    (suite['system_out'] && suite['system_out']._text) ||
                     '')
                     .toString()
                     .trim();
-                const systemErr = ((suite.system_err && suite.system_err._cdata) ||
-                    (suite.system_err && suite.system_err._text) ||
+                const systemErr = ((suite['system-err'] && suite['system_err']._cdata) ||
+                    (suite['system_err'] && suite['system_err']._text) ||
                     '')
                     .toString()
                     .trim();
