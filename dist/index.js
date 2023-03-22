@@ -587,17 +587,17 @@ suite, parentName, suiteRegex, annotatePassed = false, checkRetries = false, exc
                     '')
                     .toString()
                     .trim();
-                const systemOut = ((suite['system_out'] && suite['system_out']._cdata) ||
-                    (suite['system_out'] && suite['system_out']._text) ||
+                const systemOut = ((suite['system-out'] && suite['system-out']._cdata) ||
+                    (suite['system-out'] && suite['system-out']._text) ||
                     '')
                     .toString()
                     .trim();
-                const systemErr = ((suite['system-err'] && suite['system_err']._cdata) ||
-                    (suite['system_err'] && suite['system_err']._text) ||
+                const systemErr = ((suite['system-err'] && suite['system-err']._cdata) ||
+                    (suite['system-err'] && suite['system-err']._text) ||
                     '')
                     .toString()
                     .trim();
-                const errorOutput = 'Stack Trace:\n'.concat(stackTrace, '\n\n\n', 'System Output:\n', systemOut, '\n\n\n', 'System Error:\n', systemErr, suite.toString().trim());
+                const errorOutput = 'Stack Trace:\n'.concat(stackTrace, '\n\n\n', 'System Output:\n', systemOut, '\n\n\n', 'System Error:\n', systemErr);
                 const message = ((failure && failure._attributes && failure._attributes.message) ||
                     (testcase.error && testcase.error._attributes && testcase.error._attributes.message) ||
                     stackTrace.split('\n').slice(0, 2).join('\n') ||

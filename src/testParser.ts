@@ -303,16 +303,16 @@ async function parseSuite(
         .trim()
 
       const systemOut: string = (
-        (suite['system_out'] && suite['system_out']._cdata) ||
-        (suite['system_out'] && suite['system_out']._text) ||
+        (suite['system-out'] && suite['system-out']._cdata) ||
+        (suite['system-out'] && suite['system-out']._text) ||
         ''
       )
         .toString()
         .trim()
 
       const systemErr: string = (
-        (suite['system-err'] && suite['system_err']._cdata) ||
-        (suite['system_err'] && suite['system_err']._text) ||
+        (suite['system-err'] && suite['system-err']._cdata) ||
+        (suite['system-err'] && suite['system-err']._text) ||
         ''
       )
         .toString()
@@ -325,8 +325,7 @@ async function parseSuite(
         systemOut,
         '\n\n\n',
         'System Error:\n',
-        systemErr,
-        suite.toString().trim()
+        systemErr
       )
 
       const message: string = (
